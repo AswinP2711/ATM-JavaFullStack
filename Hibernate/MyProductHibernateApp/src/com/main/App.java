@@ -142,11 +142,24 @@ public class App {
 			case 7:
 				listProduct=ProductFactory.getInstance().getAllProducts(entityManager);
 				listProduct.parallelStream().forEach(pr->System.out.println(pr));
-				System.out.println("Enter product ID to delete");
+				System.out.println("Enter Product ID to delete : ");
 				pid=sc.nextInt();
+				p = entityManager.find(Product.class,pid);
+				if (p==null) {
+					System.out.println("ID invalid");
+					break;
+				}
 				rlist =ProductFactory.getInstance().getReviewsByProductId(entityManager,pid);
-				rlist.parallelStream().forEach(rev->System.out.println(rev));
-				entityManager.remove(rlist);
+				if(rlist.size()==0) {
+					entityManager.remove(p);
+					System.out.println("Product Deleted");
+				}else {
+					for (int i = 0; i < rlist.size(); i++) {
+						entityManager.remove(rlist.get(i));
+					}
+					entityManager.remove(p);
+					System.out.println("Product Deleted");
+				}
 				break;
 			default:
 				break;
