@@ -3,7 +3,7 @@ id int primary key auto_increment,
 name varchar(255) NOT NULL,
 price double NOT NULL,
 description varchar(255) NOT NULL);
-
+ 
 desc product;
 
 insert into product(name,price,description) values

@@ -16,5 +16,17 @@ insert into employee(name,salary,branch) values
 
 select * from employee;
 
+show tables;
 
+desc students;
+select * from students;
+desc department;
+select * from department;
+
+desc products;
+desc vendor;
+desc review;
+select * from vendor;
+select * from products;
+select * from review;
 
