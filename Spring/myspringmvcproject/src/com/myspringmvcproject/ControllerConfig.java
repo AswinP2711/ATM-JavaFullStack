@@ -12,19 +12,21 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.myspringmvcproject.controller"})
-public class ControllerConfig implements WebMvcConfigurer{
+@ComponentScan(basePackages = { "com.myspringmvcproject.controller", "com.myspringmvcproject.service",
+		"com.myspringmvcproject.db" })
+
+public class ControllerConfig implements WebMvcConfigurer {
 	@Bean
 	public InternalResourceViewResolver viewResolver() {
-		InternalResourceViewResolver vr=new InternalResourceViewResolver();
+		InternalResourceViewResolver vr = new InternalResourceViewResolver();
 		vr.setPrefix("/WEB-INF/jsps/");
 		vr.setSuffix(".jsp");
 		return vr;
 	}
-	
+
 	@Bean
 	public DataSource getDataSource() {
-		DriverManagerDataSource dataSource= new DriverManagerDataSource();
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setUrl("jdbc:mysql://localhost:3306/mydb_2000078293");
 		dataSource.setUsername("root");
 		dataSource.setPassword("Password123");
