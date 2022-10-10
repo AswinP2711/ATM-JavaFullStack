@@ -16,6 +16,10 @@ public class ProductService {
 	
 	public List<Product> getAllProducts() {
 		return productDb.getAllProducts();
+	}
+
+	public void insertProduct(Product product) {
+		productDb.insertProduct(product);
 	}	
 	
 }

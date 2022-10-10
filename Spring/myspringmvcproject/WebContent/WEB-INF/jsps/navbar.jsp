@@ -41,6 +41,7 @@ li a:hover {
 		<ul>
 			<li><a href="<%=request.getContextPath()%>/">Home</a></li>
 			<li><a href="<%=request.getContextPath()%>/products">Products</a></li>
+			<li><a href="<%=request.getContextPath()%>/employees">Employees</a></li>
 			<li><a href="<%=request.getContextPath()%>/contact">Contact</a></li>
 			<li><a href="<%=request.getContextPath()%>/about">About</a></li>
 		</ul>

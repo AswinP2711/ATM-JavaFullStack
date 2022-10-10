@@ -2,7 +2,9 @@ package com.myspringmvcproject.db;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -26,6 +28,15 @@ public class ProductDB {
 	public List<Product> getAllProducts() {
 		String sql="select * from product1";
 		return jdbc.query(sql, new A());
+	}
+
+	public void insertProduct(Product product) {
+		String sql="insert into product1(title,price,vendor) values (:title,:price,:vendor)";
+		Map<String,Object> map=new HashMap<>();
+		map.put("title",product.getTitle());
+		map.put("price", product.getPrice());
+		map.put("vendor", product.getVendor());
+		jdbc.update(sql, map);
 	}
 
 }

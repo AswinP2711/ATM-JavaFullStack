@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,7 @@ body{
         line-height: 1.3;
     }
     
-    .product-item{
+    .employee-item{
         display: block;
         float: left;
         border: 1px solid #dfdfdf;  
@@ -22,7 +22,7 @@ body{
         margin: 10px;
         border-radius: 10px;
     }
-    .product-item a{
+    .employee-item a{
         text-decoration: none;
     }
     .title-content {
@@ -46,18 +46,18 @@ body{
 	<c:import url="navbar.jsp" />
 	<section>
 	<div class="title-content">
-	<span class="page-header">All Products</span>
+	<span class="page-header">All Employees</span>
 	<span class="add-link">
-	<a href="${pageContext.request.contextPath}/show-add-product">+Add Product</a>
+	<a href="${pageContext.request.contextPath}/show-add-employee">+Add Employee</a>
 	</span>
 	</div>
 		<c:set var="sr" value="1" />
-		<c:forEach items="${productList}" var="p">
-			<div class="product-item">
-				<span>Product No. : <c:out value="${sr}" /></span> <br> 
-				<span>Title : <c:out value="${p.title}" /></span> <br> 
-				<span>Price : <c:out value="${p.price}" /></span> <br>
-				<span>Vendor : <c:out value="${p.vendor}" /></span> <br>
+		<c:forEach items="${employeeList}" var="e">
+			<div class="employee-item">
+				<span>Employee No. : <c:out value="${sr}" /></span> <br> 
+				<span>Name : <c:out value="${e.name}" /></span> <br> 
+				<span>Salary : <c:out value="${e.salary}" /></span> <br>
+				<span>Branch : <c:out value="${e.branch}" /></span> <br>
 				<a href="#">Edit</a> | <a href="#">Delete</a>
 			</div>
 			<c:set var="sr" value="${sr=sr+1}" />
