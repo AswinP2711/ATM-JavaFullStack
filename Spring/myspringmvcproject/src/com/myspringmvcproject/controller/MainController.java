@@ -87,4 +87,32 @@ public class MainController {
 		employeeService.insertEmployee(employee);
 		return "redirect:/employees";
 	}
+	
+	@RequestMapping("/delete-product")
+	public String deleteProduct(@RequestParam("pid") int pid) {
+		productService.deleteProduct(pid);
+		return "redirect:/products?msg=Product Deleted";
+	}
+	
+	@RequestMapping("/edit-product-form")
+	public String editProductForm(@RequestParam("pid") int pid,Model model) {
+		Product product=productService.getProductById(pid);
+		model.addAttribute("product", product);
+		return "edit-product";
+	}
+	
+	@RequestMapping("/edit-product")
+	public String editProduct(@RequestParam("title") String title,
+			@RequestParam("price") Double price,
+			@RequestParam("vendor") String vendor,
+			@RequestParam("id") int id,
+			Product product) {
+		product.setTitle(title);
+		product.setPrice(price);
+		product.setVendor(vendor);
+		product.setId(id);
+		
+		productService.editProduct(product);
+		return "redirect:/products?msg=Product Edited";
+	}
 }

@@ -20,6 +20,19 @@ public class ProductService {
 
 	public void insertProduct(Product product) {
 		productDb.insertProduct(product);
-	}	
+	}
+
+	public void deleteProduct(int pid) {
+		productDb.deleteProduct(pid);
+		
+	}
+
+	public Product getProductById(int pid) {
+		return productDb.getProductById(pid);
+	}
+
+	public void editProduct(Product product) {
+		productDb.editProduct(product);
+	}
 	
 }

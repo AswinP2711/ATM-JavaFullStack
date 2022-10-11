@@ -40,6 +40,11 @@ body{
     .add-link  a:hover{
      color: black;
     }
+    .msg{
+    border: 1px solid #cccccc;
+    padding: 15px;
+    background-color: #fefefe;
+    }
 </style>
 </head>
 <body>
@@ -51,6 +56,11 @@ body{
 	<a href="${pageContext.request.contextPath}/show-add-product">+Add Product</a>
 	</span>
 	</div>
+	<c:if test="${ param.msg != null}">
+	<div class="msg">
+	<c:out value="${param.msg}"></c:out>
+	</div>
+	</c:if>
 		<c:set var="sr" value="1" />
 		<c:forEach items="${productList}" var="p">
 			<div class="product-item">
@@ -58,7 +68,7 @@ body{
 				<span>Title : <c:out value="${p.title}" /></span> <br> 
 				<span>Price : <c:out value="${p.price}" /></span> <br>
 				<span>Vendor : <c:out value="${p.vendor}" /></span> <br>
-				<a href="#">Edit</a> | <a href="#">Delete</a>
+				<a href="${pageContext.request.contextPath}/edit-product-form?pid=${p.id}">Edit</a> | <a href="${pageContext.request.contextPath}/delete-product?pid=${p.id}">Delete</a>
 			</div>
 			<c:set var="sr" value="${sr=sr+1}" />
 		</c:forEach>

@@ -39,6 +39,29 @@ public class ProductDB {
 		jdbc.update(sql, map);
 	}
 
+	public void deleteProduct(int pid) {
+		String sql="delete from product1 where id=:id";
+		Map<String, Integer> map = new HashMap<>();
+		map.put("id", pid);
+		jdbc.update(sql, map);
+	}
+
+	public Product getProductById(int pid) {
+		String sql="select * from product1 where id=:id";
+		Map<String,Integer> map=new HashMap<>();
+		map.put("id",pid);
+		return jdbc.queryForObject(sql, map, new A());
+	}
+
+	public void editProduct(Product product) {
+		String sql="update product1 set title=:title,price=:price,vendor=:vendor where id=:id";
+		Map<String,Object> map=new HashMap<>();
+		map.put("id", product.getId());
+		map.put("title",product.getTitle());
+		map.put("price", product.getPrice());
+		map.put("vendor", product.getVendor());
+		jdbc.update(sql, map);
+	}
 }
 
 class A implements RowMapper<Product>{
