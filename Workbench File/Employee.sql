@@ -30,3 +30,8 @@ select * from vendor;
 select * from products;
 select * from review;
 
+desc employee_records;
+select * from employee_records;
+
+desc dept;
+select * from dept;
